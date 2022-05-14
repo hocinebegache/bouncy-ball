@@ -52,5 +52,12 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Collided with " + collision.gameObject.name + " with the powerup set to" + hasPowerup);
             enemyRegidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
         }
+
+        if (collision.gameObject.CompareTag("EnemyHard"))
+        {
+            Rigidbody hardEnemy = collision.gameObject.GetComponent<Rigidbody>();
+            Vector3 awayFromEnemy = (transform.position - collision.gameObject.transform.position);
+            playerRb.AddForce(awayFromEnemy * 4, ForceMode.Impulse);
+        }
     }
 }
